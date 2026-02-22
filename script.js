@@ -12,5 +12,3 @@ document.querySelectorAll('nav a').forEach(link => {
         }
     });
 });
-
-// Optionnel : fermer le menu mobile si tu en ajoutes un plus tard
