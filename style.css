@@ -1,151 +1,95 @@
-/* Timeline (Expériences) */
-.timeline {
-    max-width: 900px;
-    margin: 0 auto;
-    position: relative;
+/* ========== ANIMATIONS ========== */
+
+/* Animation d'apparition au défilement */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.timeline::before {
+section {
+    animation: fadeInUp 0.8s ease-out both;
+    /* "both" garde l'état final après animation */
+}
+
+/* On peut aussi appliquer l'animation seulement quand la section est visible (plus technique). 
+   Pour l'instant, on anime tout au chargement, c'est déjà bien. */
+
+/* Amélioration des effets au survol des cartes */
+.service-card, .project-card, .timeline-right, .cert-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.service-card:hover, .project-card:hover, .cert-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 30px rgba(10,31,68,0.15);
+    background-color: #ffffff;
+}
+
+.timeline-right:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+/* Animation pour la barre de navigation (optionnel) */
+nav {
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+nav:hover {
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+/* Effet de survol sur les liens du menu */
+.nav-links a {
+    position: relative;
+}
+.nav-links a::after {
     content: '';
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 2px;
-    height: 100%;
-    background-color: #d0d9e5;
-}
-
-.timeline-item {
-    display: flex;
-    justify-content: flex-end;
-    padding: 20px 0;
-    position: relative;
-}
-
-.timeline-item:nth-child(odd) {
-    flex-direction: row-reverse;
-}
-
-.timeline-left {
-    width: 45%;
-    padding: 0 20px;
-    text-align: right;
-}
-
-.timeline-item:nth-child(odd) .timeline-left {
-    text-align: left;
-}
-
-.timeline-right {
-    width: 45%;
-    padding: 0 20px;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-    padding: 20px;
-}
-
-.timeline-item::before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background-color: #0a1f44;
-    border: 3px solid #fff;
-    z-index: 1;
-}
-
-.date {
-    font-weight: 600;
-    color: #0a1f44;
-    background: #eef2f6;
-    padding: 5px 15px;
-    border-radius: 50px;
-    display: inline-block;
-    margin-bottom: 10px;
-}
-
-.company {
-    font-weight: 600;
-    color: #2c3e50;
-    margin-bottom: 10px;
-}
-
-.timeline-right ul {
-    list-style: none;
-    padding-left: 0;
-}
-
-.timeline-right li {
-    margin-bottom: 8px;
-    padding-left: 20px;
-    position: relative;
-}
-
-.timeline-right li::before {
-    content: '▹';
-    position: absolute;
+    bottom: -5px;
     left: 0;
-    color: #0a1f44;
-}
-
-/* Langues */
-#langues {
-    background-color: #f8fafc;
-}
-
-.langues-container {
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.langue-item {
-    margin-bottom: 25px;
-}
-
-.langue-name {
-    display: block;
-    font-weight: 600;
-    color: #0a1f44;
-    margin-bottom: 5px;
-}
-
-.progress-bar {
-    background-color: #e0e7ef;
-    height: 30px;
-    border-radius: 50px;
-    overflow: hidden;
-    position: relative;
-}
-
-.progress {
+    width: 0;
+    height: 2px;
     background-color: #0a1f44;
-    height: 100%;
-    line-height: 30px;
-    color: white;
-    padding-left: 15px;
-    font-size: 0.9rem;
-    border-radius: 50px 0 0 50px;
+    transition: width 0.3s;
+}
+.nav-links a:hover::after {
+    width: 100%;
 }
 
-/* Responsive timeline */
-@media (max-width: 768px) {
-    .timeline::before {
-        left: 30px;
-    }
-    .timeline-item {
-        flex-direction: column !important;
-        padding-left: 50px;
-    }
-    .timeline-left, .timeline-right {
-        width: 100%;
-        padding: 0;
-        text-align: left !important;
-    }
-    .timeline-item::before {
-        left: 30px;
-    }
+/* Animation pour les statistiques (chiffres) */
+.stat-number {
+    display: inline-block;
+    animation: countPop 0.5s ease-out;
+}
+@keyframes countPop {
+    0% { transform: scale(0.8); opacity: 0; }
+    80% { transform: scale(1.1); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Amélioration des barres de progression (langues) */
+.progress {
+    transition: width 1s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+.progress::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: shimmer 2s infinite;
+}
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
 }
