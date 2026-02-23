@@ -1,95 +1,430 @@
-/* ========== ANIMATIONS ========== */
-
-/* Animation d'apparition au défilement */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* Reset et base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-section {
-    animation: fadeInUp 0.8s ease-out both;
-    /* "both" garde l'état final après animation */
-}
-
-/* On peut aussi appliquer l'animation seulement quand la section est visible (plus technique). 
-   Pour l'instant, on anime tout au chargement, c'est déjà bien. */
-
-/* Amélioration des effets au survol des cartes */
-.service-card, .project-card, .timeline-right, .cert-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-}
-
-.service-card:hover, .project-card:hover, .cert-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 30px rgba(10,31,68,0.15);
+body {
+    font-family: 'Inter', sans-serif;
+    color: #1e293b;
+    line-height: 1.6;
     background-color: #ffffff;
 }
 
-.timeline-right:hover {
-    transform: scale(1.02);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-/* Animation pour la barre de navigation (optionnel) */
-nav {
-    transition: background-color 0.3s, box-shadow 0.3s;
-}
-nav:hover {
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+/* Navigation */
+.navbar {
+    background-color: #fff;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-/* Effet de survol sur les liens du menu */
-.nav-links a {
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #334155;
+    font-weight: 500;
+    transition: color 0.3s;
+    font-size: 0.95rem;
+}
+
+.nav-link:hover {
+    color: #0f172a;
+}
+
+/* Section Hero */
+.hero {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+.hero-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.hero-left h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    color: #334155;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.hero-description {
+    color: #475569;
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+    font-size: 0.95rem;
+}
+
+.btn-primary {
+    background-color: #0f172a;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #1e293b;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(15,23,42,0.2);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: #0f172a;
+    border: 2px solid #0f172a;
+}
+
+.btn-secondary:hover {
+    background-color: #0f172a;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(15,23,42,0.1);
+}
+
+.profile-photo {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 50%;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    border: 5px solid #fff;
+}
+
+/* Sections générales */
+.section {
+    padding: 100px 20px;
+}
+
+.bg-light {
+    background-color: #f8fafc;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #0f172a;
+    text-align: center;
+    margin-bottom: 60px;
     position: relative;
 }
-.nav-links a::after {
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: #0f172a;
+    margin: 20px auto 0;
+}
+
+/* Grilles de cartes */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background: #fff;
+    padding: 40px 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid #e2e8f0;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(15,23,42,0.1);
+}
+
+.card i {
+    font-size: 3rem;
+    color: #0f172a;
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: #0f172a;
+}
+
+.card p {
+    color: #475569;
+    font-size: 0.95rem;
+}
+
+/* Timeline */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.timeline::before {
     content: '';
     position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: #0a1f44;
-    transition: width 0.3s;
-}
-.nav-links a:hover::after {
-    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 100%;
+    background-color: #cbd5e1;
 }
 
-/* Animation pour les statistiques (chiffres) */
-.stat-number {
-    display: inline-block;
-    animation: countPop 0.5s ease-out;
-}
-@keyframes countPop {
-    0% { transform: scale(0.8); opacity: 0; }
-    80% { transform: scale(1.1); }
-    100% { transform: scale(1); opacity: 1; }
-}
-
-/* Amélioration des barres de progression (langues) */
-.progress {
-    transition: width 1s ease-in-out;
+.timeline-item {
     position: relative;
-    overflow: hidden;
+    margin-bottom: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
 }
-.progress::after {
-    content: '';
+
+.timeline-item:nth-child(even) {
+    justify-content: flex-start;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #0f172a;
+    border: 3px solid #fff;
+    z-index: 1;
+}
+
+.timeline-date {
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-    animation: shimmer 2s infinite;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #0f172a;
+    color: #fff;
+    padding: 5px 15px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    z-index: 2;
 }
-@keyframes shimmer {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
+
+.timeline-content {
+    width: 45%;
+    background: #fff;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border: 1px solid #e2e8f0;
+    margin-top: 40px;
+}
+
+.timeline-item:nth-child(odd) .timeline-content {
+    margin-right: 55%;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+    margin-left: 55%;
+}
+
+.timeline-content h3 {
+    font-size: 1.2rem;
+    color: #0f172a;
+    margin-bottom: 5px;
+}
+
+.timeline-content .company {
+    font-weight: 600;
+    color: #475569;
+    margin-bottom: 10px;
+}
+
+.timeline-content ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.timeline-content li {
+    margin-bottom: 5px;
+    padding-left: 20px;
+    position: relative;
+    color: #334155;
+    font-size: 0.95rem;
+}
+
+.timeline-content li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: #0f172a;
+}
+
+/* Certifications */
+.certs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.cert-card {
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    text-align: center;
+    font-size: 0.9rem;
+    border: 1px solid #e2e8f0;
+    transition: transform 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.cert-card:hover {
+    transform: scale(1.05);
+    background-color: #f8fafc;
+}
+
+.cert-card i {
+    color: #0f172a;
+    font-size: 1rem;
+}
+
+/* Contact */
+.contact-container {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.contact-info p {
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
+
+.contact-info i {
+    width: 30px;
+    color: #0f172a;
+    margin-right: 10px;
+}
+
+.contact-info a {
+    color: #0f172a;
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    background-color: #0f172a;
+    color: #fff;
+    text-align: center;
+    padding: 30px;
+    font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .hero-buttons {
+        justify-content: center;
+    }
+    
+    .profile-photo {
+        max-width: 300px;
+    }
+    
+    .nav-menu {
+        display: none; /* Pour mobile, on simplifie */
+    }
+    
+    .timeline::before {
+        left: 20px;
+    }
+    
+    .timeline-item {
+        justify-content: flex-start !important;
+    }
+    
+    .timeline-dot {
+        left: 20px;
+    }
+    
+    .timeline-date {
+        left: 20px;
+        transform: translateX(0);
+    }
+    
+    .timeline-content {
+        width: calc(100% - 50px);
+        margin-left: 50px !important;
+        margin-right: 0 !important;
+    }
 }
