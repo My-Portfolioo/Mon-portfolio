@@ -1,4 +1,4 @@
-// Défilement fluide pour les liens de navigation
+// Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -12,5 +12,5 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Animation au scroll (optionnel avec Intersection Observer)
-// Pour l'instant, on garde simple.
+// Optionnel : animation supplémentaire au survol des cartes
+// Déjà géré en CSS, mais on peut ajouter du JS pour plus d'effets
