@@ -1,11 +1,16 @@
-// Défilement fluide
-document.querySelectorAll('nav a').forEach(link => {
-    link.addEventListener('click', function(e) {
+// Défilement fluide pour les liens de navigation
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        const targetId = this.getAttribute('href');
-        const targetSection = document.querySelector(targetId);
-        if (targetSection) {
-            targetSection.scrollIntoView({ behavior: 'smooth' });
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
         }
     });
 });
+
+// Animation au scroll (optionnel avec Intersection Observer)
+// Pour l'instant, on garde simple.
