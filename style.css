@@ -520,3 +520,47 @@ footer {
         margin-right: 0 !important;
     }
 }
+/* Formations */
+.formations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.formation-card {
+    background: #1e3a5f;
+    padding: 30px;
+    border-radius: 16px;
+    border: 1px solid #2a4a7a;
+    transition: transform 0.3s, border-color 0.3s;
+}
+
+.formation-card:hover {
+    transform: translateY(-5px);
+    border-color: #64ffda;
+}
+
+.formation-card h3 {
+    color: #64ffda;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.formation-card .institution {
+    color: #ffd700;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.formation-card .date {
+    color: #8892b0;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.formation-card p {
+    color: #ccd6f6;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
