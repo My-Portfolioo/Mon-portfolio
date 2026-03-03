@@ -24,12 +24,14 @@
                 <li><a href="#analyste" class="nav-link">Analyste</a></li>
                 <li><a href="#developpeuse" class="nav-link">Développeuse</a></li>
                 <li><a href="#certifiee" class="nav-link">Certifiée</a></li>
+                <li><a href="#publications" class="nav-link">Publications</a></li>
+                <li><a href="#excel" class="nav-link">Fichiers Excel</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section avec photo -->
     <section id="home" class="hero">
         <div class="hero-container">
             <div class="hero-left" data-aos="fade-right" data-aos-duration="1000">
@@ -45,9 +47,7 @@
                 </div>
             </div>
             <div class="hero-right" data-aos="fade-left" data-aos-duration="1000">
-                <div class="profile-photo-placeholder">
-                    <i class="fas fa-user-circle"></i> <!-- Remplacer par ta photo quand disponible -->
-                </div>
+                <img src="hasnaa.jpg" alt="Hasnaa Sammoud" class="profile-photo">
             </div>
         </div>
     </section>
@@ -178,38 +178,7 @@
         </div>
     </section>
 
-    <!-- Section Contact -->
-    <section id="contact" class="section bg-light">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Contact</h2>
-            <div class="contact-container" data-aos="fade-up" data-aos-delay="200">
-                <div class="contact-info">
-                    <p><i class="fas fa-envelope"></i> hasnaesammoud@gmail.com</p>
-                    <p><i class="fas fa-phone"></i> 07 48 48 73 26</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Île-de-France, France</p>
-                    <p><i class="fab fa-linkedin"></i> <a href="https://linkedin.com/in/hasnaa-sammoud" target="_blank">LinkedIn</a></p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <p>© 2026 Hasnaa Sammoud – Portfolio. Tous droits réservés.</p>
-    </footer>
-
-    <!-- Scripts -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            duration: 800,
-            once: true,
-            offset: 100
-        });
-    </script>
-    <script src="script.js"></script>
-
-<!-- Section Publications / Analyses -->
+    <!-- Section Publications / Analyses -->
     <section id="publications" class="section bg-light">
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">📝 Publications & Analyses</h2>
@@ -300,5 +269,48 @@
             </div>
         </div>
     </section>
-    </body>
+
+    <!-- Section Fichiers Excel -->
+    <section id="excel" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">📊 Fichiers Excel</h2>
+            <div id="excel-grid" class="excel-grid">
+                <!-- Les cartes seront chargées automatiquement ici -->
+            </div>
+            <p class="excel-note">Les fichiers sont chargés automatiquement depuis GitHub.</p>
+        </div>
+    </section>
+
+    <!-- Section Contact -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Contact</h2>
+            <div class="contact-container" data-aos="fade-up" data-aos-delay="200">
+                <div class="contact-info">
+                    <p><i class="fas fa-envelope"></i> hasnaesammoud@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> 07 48 48 73 26</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Île-de-France, France</p>
+                    <p><i class="fab fa-linkedin"></i> <a href="https://linkedin.com/in/hasnaa-sammoud" target="_blank">LinkedIn</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Hasnaa Sammoud – Portfolio. Tous droits réservés.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+    </script>
+    <script src="script.js"></script>
+    <script src="excel-files.js"></script>
+</body>
 </html>
